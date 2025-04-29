@@ -1,0 +1,74 @@
+.modalActive {
+  position: absolute;
+  width: 30rem;
+  height: 10rem;
+  top: calc(50% - 250px);
+  left: calc(50% - 175px);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  cursor: default;
+  padding: 40px 20px;
+  border: 2px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  z-index: 2;
+}
+.modal-paragraph {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.modalClose {
+  font-family: var(--font-regular);
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.modalWindow {
+  position: relative;
+}
+
+.button-container {
+  gap: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.order-button {
+  background-color: #d4e4d2;
+  color: black;
+  border: none;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  margin-left: 1rem;
+  border-radius: 40px;
+}
+.go-back-button {
+  background-color: #e4d2d2;
+  color: black;
+  border: none;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  margin-left: 1rem;
+  border-radius: 40px;
+}
+.order-button:hover {
+  background-color: #9fb19c;
+}
+.go-back-button:hover {
+  background-color: #b19c9c;
+}
+
+.cross:hover {
+  filter: brightness(0) saturate(100%) invert(45%) sepia(80%) saturate(350%)
+    hue-rotate(300deg);
+}

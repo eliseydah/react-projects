@@ -1,0 +1,11 @@
+.category-item{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+.plant-title{
+    font-size: 1rem;
+}
+.category-item .plant-title{
+    font-size: 1rem;
+}

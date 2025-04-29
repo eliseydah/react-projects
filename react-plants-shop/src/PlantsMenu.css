@@ -1,0 +1,17 @@
+.plants-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-left: 0.5rem;
+  /* justify-content: center; */
+}
+h2 {
+  margin-left: 2rem;
+}
+@media (max-width: 576px) {
+  .plants-menu {
+    margin-left: 0;
+    justify-content: center;
+  }
+}

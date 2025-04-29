@@ -1,0 +1,90 @@
+.home-container {
+  background-image: url("../images/border-leaves.png");
+  height: 100vh;
+  width: 100%;
+  background-repeat: round;
+  background-size: cover;
+  background-color: rgb(255, 249, 240);
+}
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  line-height: 2px;
+  font-size: 1.2rem;
+}
+.description {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 3rem;
+  color: #4d4d4d;
+  padding-bottom: 3px;
+}
+.catalogue-link {
+  background-color: #d4e4d2;
+  color: black;
+  border: none;
+  padding: 2rem 2rem;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  margin-top: 2rem;
+  border-radius: 40px;
+}
+.catalogue-link:hover {
+  background-color: #9fb19c;
+}
+@media (max-width: 576px) {
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    line-height: 3rem;
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+  .header-description-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+  }
+  .description {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+  .catalogue-link {
+    background-color: #d4e4d2;
+    color: black;
+    border: none;
+    padding: 1rem 1rem;
+    font-size: 1.2rem;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 40px;
+  }
+  p {
+    margin: 0;
+  }
+  .filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    margin-left: 0.5rem;
+  }
+}
