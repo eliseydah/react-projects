@@ -1,0 +1,33 @@
+.card-body{
+    display: flex;
+    flex-direction: row;
+  
+  }
+  .wish-container {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.315);
+    border-radius: 10px;
+    width: 30%;
+  }
+  .button-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+  }
+  
+  .wish-delete-button {
+      padding: 10px;
+      font-size: 24px;
+      color: rgba(212, 25, 25, 0.706);
+      border: 0;
+      background-color: rgba(252, 252, 252, 0);
+  }
+  .wish-delete-button:hover {
+      color: rgba(255, 0, 0, 0.795);
+  }
+  .top-message{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
