@@ -1,0 +1,10 @@
+.clear-completed-button {
+    border: 0;
+    color: rgb(171, 167, 167);
+    background-color: white;
+}
+
+.clear-completed-button:hover {
+    border: 1px solid #f2e9e9;
+    border-radius: 6px;
+}

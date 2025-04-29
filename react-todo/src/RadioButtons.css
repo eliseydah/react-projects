@@ -1,0 +1,20 @@
+.multi-buttons input[type=radio] {
+    display: none;
+}
+
+.multi-buttons label {
+
+    padding: 5px;
+
+}
+
+.multi-buttons input[type=radio]:checked+label {
+    border: 1px solid #ecc1c1;
+    border-radius: 6px;
+
+}
+
+.multi-buttons label:hover {
+    border: 1px solid #f2e9e9;
+    border-radius: 6px;
+}
