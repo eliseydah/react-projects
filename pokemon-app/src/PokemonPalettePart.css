@@ -3,7 +3,22 @@
   height: 100vh;
   background-color: blue;
   color: white;
+  padding: 8rem 4rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.7rem;
+}
+.text-section {
+  flex: 1;
+}
+.image-section {
+  flex: 2;
 }
 .right {
   flex: 3;
+}
+.theme {
+  width: 6rem;
+  height: 2rem;
 }

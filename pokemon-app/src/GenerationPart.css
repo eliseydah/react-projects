@@ -1,19 +1,24 @@
 .generation-part {
   width: 100%;
-  background-color: red;
+  background: linear-gradient(
+    to bottom,
+    red 0%,
+    red 33.33%,
+    green 33.33%,
+    green 66.66%,
+    yellow 66.66%,
+    yellow 100%
+  );
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 .left {
   flex: 1;
 }
-.first-color-block {
-  background-color: tomato;
-}
-.second-color-block {
-  background-color: orange;
-}
-.third-color-block {
-  background-color: cornflowerblue;
+p {
+  margin: 0%;
 }
