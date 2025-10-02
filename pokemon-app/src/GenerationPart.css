@@ -1,0 +1,19 @@
+.generation-part {
+  width: 100%;
+  background-color: red;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.left {
+  flex: 1;
+}
+.first-color-block {
+  background-color: tomato;
+}
+.second-color-block {
+  background-color: orange;
+}
+.third-color-block {
+  background-color: cornflowerblue;
+}
