@@ -22,3 +22,41 @@
 p {
   margin: 0%;
 }
+.input {
+  background-color: white;
+  border: none;
+  border-radius: 0.3rem;
+  width: 6rem;
+  height: 2rem;
+  text-align: center;
+}
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+.input-icon {
+  margin-left: -1.8rem;
+}
+.with-icon {
+  background-color: white;
+  border: none;
+  border-radius: 0.3rem;
+  width: 15rem;
+  height: 2rem;
+  text-align: center;
+  background: url("../images/glitter.svg") no-repeat 20px center white;
+  padding-left: 1.2rem;
+}
+.number-interaction {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.pokemon-number-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+}
