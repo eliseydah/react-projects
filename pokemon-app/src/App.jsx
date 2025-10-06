@@ -1,6 +1,5 @@
 import GenerationPart from "./GenerationPart";
 import PokemonPalettePart from "./PokemonPalettePart";
-
 import "./App.css";
 
 function App() {

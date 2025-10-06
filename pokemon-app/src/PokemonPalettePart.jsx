@@ -1,4 +1,5 @@
 import "./PokemonPalettePart.css";
+import ColorBlock from "./ColorBlock";
 function PokemonPalettePart() {
   return (
     <div className="container item right">
@@ -18,7 +19,11 @@ function PokemonPalettePart() {
         </div>
         <div className="image-section"></div>
       </div>
-      <div className="colors-section"></div>
+      <div className="colors-section">
+        <ColorBlock />
+        <ColorBlock />
+        <ColorBlock />
+      </div>
     </div>
   );
 }
