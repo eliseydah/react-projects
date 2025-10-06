@@ -3,28 +3,36 @@ import "./GenerationPart.css";
 function GenerationPart() {
   //   const [pokemonInfo, setPokemonInfo] = useState("");
   const [pokemonName, setPokemonName] = useState("");
-  //   const [pokemonNumber, setPokemonNumber] = useState("");
+  const [pokemonNumber, setPokemonNumber] = useState("");
+  //   const [url, setUrl] = useState("");
+  //  --- IGNORE ---
   //   function getAllPokemonInfo(data) {
   //     setPokemonInfo(data);
   //   }
   function getPokemonInfo(event) {
     event.preventDefault();
-    setPokemonName(""),
-      fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`
-        // `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=8698a1225dd8dbde8eb62a37a25c278e`
-      )
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          // getAllPokemonInfo(data);
-        })
-        .catch((err) => {
-          console.error(err);
-          alert("Wrong pokemon name");
-        });
+    const url = pokemonName
+      ? `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`
+      : `https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`;
+
+    console.log(url);
+
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        // getAllPokemonInfo(data);
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Wrong pokemon name");
+      })
+      .finally(() => {
+        setPokemonName("");
+        setPokemonNumber("");
+      });
   }
   return (
     <div className="generation-part item left">
@@ -60,7 +68,13 @@ function GenerationPart() {
               width="10px"
             />
           </button>
-          <input type="number" className="with-icon" />
+          <input
+            type="number"
+            className="with-icon"
+            onChange={(e) => setPokemonNumber(e.target.value)}
+            value={pokemonNumber}
+            onSubmit={getPokemonInfo}
+          />
           <button className="pokemon-number-button">
             {" "}
             <img
