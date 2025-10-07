@@ -1,39 +1,13 @@
 import { useState } from "react";
 import "./GenerationPart.css";
-function GenerationPart() {
-  //   const [pokemonInfo, setPokemonInfo] = useState("");
-  const [pokemonName, setPokemonName] = useState("");
-  const [pokemonNumber, setPokemonNumber] = useState("");
-  //   const [url, setUrl] = useState("");
-  //  --- IGNORE ---
-  //   function getAllPokemonInfo(data) {
-  //     setPokemonInfo(data);
-  //   }
-  function getPokemonInfo(event) {
-    event.preventDefault();
-    const url = pokemonName
-      ? `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`
-      : `https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`;
+function GenerationPart({ onSearch }) {
+  const [name, setName] = useState("");
+  const [id, setId] = useState("");
 
-    console.log(url);
+  const handleClick = () => {
+    onSearch(name.toLowerCase().trim(), id.trim());
+  };
 
-    fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        // getAllPokemonInfo(data);
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Wrong pokemon name");
-      })
-      .finally(() => {
-        setPokemonName("");
-        setPokemonNumber("");
-      });
-  }
   return (
     <div className="generation-part item left">
       <img />
@@ -44,9 +18,8 @@ function GenerationPart() {
           type="text"
           className="with-icon"
           placeholder="Enter the name..."
-          onChange={(e) => setPokemonName(e.target.value)}
-          value={pokemonName}
-          onSubmit={getPokemonInfo}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
         <img
           className="input-icon"
@@ -71,9 +44,8 @@ function GenerationPart() {
           <input
             type="number"
             className="with-icon"
-            onChange={(e) => setPokemonNumber(e.target.value)}
-            value={pokemonNumber}
-            onSubmit={getPokemonInfo}
+            onChange={(e) => setId(e.target.value)}
+            value={id}
           />
           <button className="pokemon-number-button">
             {" "}
@@ -86,7 +58,7 @@ function GenerationPart() {
           </button>
         </div>
       </div>
-      <button className="search-button" onClick={getPokemonInfo}>
+      <button className="search-button" onClick={handleClick}>
         {" "}
         Search{" "}
       </button>
