@@ -1,6 +1,6 @@
 import "./PokemonPalettePart.css";
 import ColorBlock from "./ColorBlock";
-function PokemonPalettePart() {
+function PokemonPalettePart({ image, pokemonName }) {
   return (
     <div className="container item right">
       <div className="pokemon-palette-part">
@@ -11,13 +11,16 @@ function PokemonPalettePart() {
             number, and this site will reveal the top three colors that bring
             your Pokémon to life. Discover patterns, compare favorites, or just
             enjoy exploring the colorful side of the Pokédex.
+            <span>{pokemonName}</span>
           </p>
           <div className="button-section">
             <button className="scroll-button"> scroll down</button>
             {/* <input type="checkbox" className="theme" /> */}
           </div>
         </div>
-        <div className="image-section"></div>
+        <div className="image-section">
+          <img src={image} alt="pokemon" />
+        </div>
       </div>
       <div className="colors-section">
         <ColorBlock />

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import "./GenerationPart.css";
-function GenerationPart({ onSearch }) {
+function GenerationPart({ onSearch, smallImage }) {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
 
   const handleClick = () => {
     onSearch(name.toLowerCase().trim(), id.trim());
+    setName("");
+    setId("");
   };
 
   return (
     <div className="generation-part item left">
-      <img />
+      <img src={smallImage} />
       <h4> The type of the pokemon</h4>
       <p> Name </p>
       <section className="input-name-section">
@@ -33,7 +35,6 @@ function GenerationPart({ onSearch }) {
       <div>
         <div className="number-interaction">
           <button className="pokemon-number-button">
-            {" "}
             <img
               src="../images/arrow-down.svg"
               alt="logo"
@@ -48,7 +49,6 @@ function GenerationPart({ onSearch }) {
             value={id}
           />
           <button className="pokemon-number-button">
-            {" "}
             <img
               src="../images/arrow-up.svg"
               alt="logo"
@@ -59,8 +59,7 @@ function GenerationPart({ onSearch }) {
         </div>
       </div>
       <button className="search-button" onClick={handleClick}>
-        {" "}
-        Search{" "}
+        Search
       </button>
     </div>
   );

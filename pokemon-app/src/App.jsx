@@ -1,9 +1,13 @@
+import { useState } from "react";
 import GenerationPart from "./GenerationPart";
 import PokemonPalettePart from "./PokemonPalettePart";
+
 import "./App.css";
 
 function App() {
-  //  const [pokemonName, setPokemonName] = useState("");
+  const [image, setImage] = useState(null);
+  const [smallImage, setSmallImage] = useState(null);
+  const [pokemonName, setPokemonName] = useState("");
   // const [pokemonNumber, setPokemonNumber] = useState("");
 
   async function getPokemonInfo(pokemonName, pokemonNumber) {
@@ -25,6 +29,12 @@ function App() {
       })
       .then((data) => {
         console.log(data);
+        setImage(
+          `https://www.pokemonpalette.com/images/pokemon/official-artwork/${data.id}.png`
+        );
+        setSmallImage(data.sprites.front_default);
+        setPokemonName(data.name);
+        console.log(image);
         // getAllPokemonInfo(data);
       })
       .catch((err) => {
@@ -40,8 +50,8 @@ function App() {
     <>
       <div>
         <div className="pokemon-app">
-          <GenerationPart onSearch={getPokemonInfo} />
-          <PokemonPalettePart />
+          <GenerationPart onSearch={getPokemonInfo} smallImage={smallImage} />
+          <PokemonPalettePart image={image} pokemonName={pokemonName} />
         </div>
       </div>
     </>
