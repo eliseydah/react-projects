@@ -50,3 +50,7 @@
   font-weight: bold;
   margin: 0;
 }
+.button-section {
+  display: flex;
+  gap: 1rem;
+}

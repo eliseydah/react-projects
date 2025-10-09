@@ -26,7 +26,6 @@ function PokemonPalettePart({ image, pokemonName }) {
               />
             </button>
             <ThemeToggler />
-            {/* <input type="checkbox" className="theme" /> */}
           </div>
         </div>
         <div className="image-section">

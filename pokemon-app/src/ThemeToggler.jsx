@@ -1,17 +1,18 @@
 import { useTheme } from "./ThemeContext";
+import "./ThemeToggler.css";
 export default function ThemeToggler() {
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   return (
-    <div className="theme-toggler">
-      <button onClick={toggleTheme} className="theme-toggle-button">
-        Switch to {theme === "light" ? "dark" : "light"} theme
-      </button>
-      <section className="container">
-        <label id="switch" class="switch">
-          <input type="checkbox" onchange="toggleTheme()" id="slider" />
-          <span class="slider round"></span>
-        </label>
-      </section>
-    </div>
+    // <div className="theme-toggler">
+    //   <button onClick={toggleTheme} className="theme-toggle-button">
+    //     Switch to {theme === "light" ? "dark" : "light"} theme
+    //   </button>
+    <section className="container">
+      <label id="switch" className="switch">
+        <input type="checkbox" onChange={toggleTheme} id="slider" />
+        <span className="slider round"></span>
+      </label>
+    </section>
+    // </div>
   );
 }
