@@ -1,7 +1,9 @@
 import { useTheme } from "./ThemeContext";
 import "./ThemeToggler.css";
 export default function ThemeToggler() {
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, theme } = useTheme();
+
+  //   const [theme, setTheme] = ();
   return (
     // <div className="theme-toggler">
     //   <button onClick={toggleTheme} className="theme-toggle-button">
@@ -9,7 +11,12 @@ export default function ThemeToggler() {
     //   </button>
     <section className="container">
       <label id="switch" className="switch">
-        <input type="checkbox" onChange={toggleTheme} id="slider" />
+        <input
+          type="checkbox"
+          checked={theme === "dark"}
+          onChange={toggleTheme}
+          id="slider"
+        />
         <span className="slider round"></span>
       </label>
     </section>
