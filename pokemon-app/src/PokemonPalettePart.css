@@ -5,8 +5,8 @@
   height: 100vh;
 }
 .pokemon-palette-part {
-  background-color: blue;
-  color: white;
+  /* background-color: blue;
+  color: white; */
   /* padding: 6rem 4rem; */
   box-sizing: border-box;
   display: flex;
@@ -28,7 +28,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   padding: 0 2rem;
 }
 .image-section {
@@ -43,4 +43,10 @@
 .theme {
   width: 6rem;
   height: 2rem;
+}
+.pokemon-name-text {
+  text-transform: capitalize;
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0;
 }

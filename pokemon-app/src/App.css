@@ -13,5 +13,14 @@
   gap: 0.2rem;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  /* background-color: black; */
+}
+body.light {
+  background: #ffffff;
+  color: #222;
+}
+
+body.dark {
+  background: #1e1e1e;
+  color: #eee;
 }

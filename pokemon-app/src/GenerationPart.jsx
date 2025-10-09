@@ -37,7 +37,7 @@ function GenerationPart({ onSearch, smallImage }) {
           <button className="pokemon-number-button">
             <img
               src="../images/arrow-down.svg"
-              alt="logo"
+              alt="arrow"
               height="10px"
               width="10px"
             />

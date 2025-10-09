@@ -1,12 +1,16 @@
 import { useState } from "react";
 import GenerationPart from "./GenerationPart";
 import PokemonPalettePart from "./PokemonPalettePart";
-
+import { ThemeProvider } from "./ThemeProvider";
 import "./App.css";
 
 function App() {
-  const [image, setImage] = useState(null);
-  const [smallImage, setSmallImage] = useState(null);
+  const [image, setImage] = useState(
+    `https://www.pokemonpalette.com/images/pokemon/official-artwork/25.png`
+  );
+  const [smallImage, setSmallImage] = useState(
+    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png`
+  );
   const [pokemonName, setPokemonName] = useState("");
   // const [pokemonNumber, setPokemonNumber] = useState("");
 
@@ -47,14 +51,14 @@ function App() {
     // });
   }
   return (
-    <>
+    <ThemeProvider>
       <div>
         <div className="pokemon-app">
           <GenerationPart onSearch={getPokemonInfo} smallImage={smallImage} />
           <PokemonPalettePart image={image} pokemonName={pokemonName} />
         </div>
       </div>
-    </>
+    </ThemeProvider>
   );
 }
 
