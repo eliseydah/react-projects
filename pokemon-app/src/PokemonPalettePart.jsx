@@ -1,7 +1,7 @@
 import "./PokemonPalettePart.css";
 import ThemeToggler from "./ThemeToggler";
 import ColorBlock from "./ColorBlock";
-function PokemonPalettePart({ image, pokemonName }) {
+function PokemonPalettePart({ image, pokemonData }) {
   return (
     <div className="container item right">
       <div className="pokemon-palette-part">
@@ -13,7 +13,7 @@ function PokemonPalettePart({ image, pokemonName }) {
             your Pokémon to life. Discover patterns, compare favorites, or just
             enjoy exploring the colorful side of the Pokédex.
           </span>
-          <p className="pokemon-name-text">{pokemonName}</p>
+          <p className="pokemon-name-text">{pokemonData.name}</p>
 
           <div className="button-section">
             <button className="scroll-button">

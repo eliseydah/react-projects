@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import GenerationPart from "./GenerationPart";
 import PokemonPalettePart from "./PokemonPalettePart";
 import { ThemeProvider } from "./ThemeProvider";
@@ -11,10 +11,10 @@ function App() {
   const [smallImage, setSmallImage] = useState(
     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png`
   );
-  const [pokemonName, setPokemonName] = useState("");
-  // const [pokemonNumber, setPokemonNumber] = useState("");
+  // const [pokemonName, setPokemonName] = useState("");
+  const [pokemonData, setPokemonData] = useState(null);
 
-  async function getPokemonInfo(pokemonName, pokemonNumber) {
+  const getPokemonInfo = useCallback(async (pokemonName, pokemonNumber) => {
     // event.preventDefault();
     let url = "";
     if (pokemonNumber) {
@@ -33,30 +33,47 @@ function App() {
       })
       .then((data) => {
         console.log(data);
+        const formattedData = {
+          name: data.name,
+          id: data.id,
+          types: data.types.map((typeInfo) => typeInfo.type.name),
+          abilities: data.abilities.map(
+            (abilityInfo) => abilityInfo.ability.name
+          ),
+          stats: data.stats.map((statInfo) => ({
+            name: statInfo.stat.name,
+            value: statInfo.base_stat,
+          })),
+          height: data.height,
+          weight: data.weight,
+          sprite: data.sprites.front_default,
+        };
+        setPokemonData(formattedData);
+        console.log(pokemonData);
         setImage(
           `https://www.pokemonpalette.com/images/pokemon/official-artwork/${data.id}.png`
         );
         setSmallImage(data.sprites.front_default);
-        setPokemonName(data.name);
-        console.log(image);
-        // getAllPokemonInfo(data);
       })
       .catch((err) => {
         console.error(err);
         alert("Wrong pokemon name");
       });
-    // .finally(() => {
-    //   setPokemonName("");
-    //   setPokemonNumber("");
-    // });
-  }
+  }, []);
+
+  useEffect(() => {
+    getPokemonInfo(null, 25); // по ID
+  }, [getPokemonInfo]);
+
   return (
     <ThemeProvider>
       <div>
-        <div className="pokemon-app">
-          <GenerationPart onSearch={getPokemonInfo} smallImage={smallImage} />
-          <PokemonPalettePart image={image} pokemonName={pokemonName} />
-        </div>
+        {pokemonData && (
+          <div className="pokemon-app">
+            <GenerationPart onSearch={getPokemonInfo} smallImage={smallImage} />
+            <PokemonPalettePart image={image} pokemonData={pokemonData} />
+          </div>
+        )}
       </div>
     </ThemeProvider>
   );
