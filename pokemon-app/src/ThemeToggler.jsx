@@ -9,7 +9,7 @@ export default function ThemeToggler() {
     //   <button onClick={toggleTheme} className="theme-toggle-button">
     //     Switch to {theme === "light" ? "dark" : "light"} theme
     //   </button>
-    <section className="container">
+    <section className="container-toggler">
       <label id="switch" className="switch">
         <input
           type="checkbox"

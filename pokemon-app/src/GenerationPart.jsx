@@ -9,7 +9,13 @@ function GenerationPart({ onSearch, smallImage }) {
     setName("");
     setId("");
   };
-
+  const randomPokemon = () => {
+    const randomId = Math.floor(Math.random() * 1025) + 1;
+    console.log(randomId);
+    onSearch("", randomId.toString());
+    setName("");
+    setId("");
+  };
   return (
     <div className="generation-part item left">
       <img src={smallImage} />
@@ -58,9 +64,14 @@ function GenerationPart({ onSearch, smallImage }) {
           </button>
         </div>
       </div>
-      <button className="search-button" onClick={handleClick}>
-        Search
-      </button>
+      <div>
+        <button className="search-button" onClick={handleClick}>
+          Search
+        </button>
+        <button className="random-button" onClick={randomPokemon}>
+          Randomize
+        </button>
+      </div>
     </div>
   );
 }
