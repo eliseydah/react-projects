@@ -47,6 +47,7 @@ function App() {
           height: data.height,
           weight: data.weight,
           sprite: data.sprites.front_default,
+          shinySprite: data.sprites.front_shiny,
         };
         setPokemonData(formattedData);
         console.log(pokemonData);

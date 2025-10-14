@@ -4,7 +4,10 @@ import PokemonInfo from "./PokemonInfo";
 function GenerationPart({ onSearch, pokemonData }) {
   const [name, setName] = useState(pokemonData.name ? pokemonData.name : "");
   const [id, setId] = useState(pokemonData.id ? pokemonData.id : "");
-
+  const [smallImage, setSmallImage] = useState(pokemonData.sprite);
+  const [smallShinyImage, setSmallShinyImage] = useState(
+    pokemonData.shinySprite
+  );
   const handleClick = () => {
     onSearch(name.toLowerCase().trim(), id.trim());
     setName(pokemonData.name);
@@ -15,15 +18,26 @@ function GenerationPart({ onSearch, pokemonData }) {
     console.log(randomId);
     await onSearch("", randomId.toString());
   };
+  //   const pokemonToggleImage = () => {
+  const [toggled, setToggled] = useState(false);
+
+  // setSmallImage(pokemonData.shinySprite);
+  //   };
   useEffect(() => {
     if (pokemonData) {
       setName(pokemonData.name);
       setId(pokemonData.id);
+      setSmallImage(pokemonData.sprite);
+      setSmallShinyImage(pokemonData.shinySprite);
     }
   }, [pokemonData]);
   return (
     <div className="generation-part item left">
-      <img src={pokemonData.sprite} width="192" height="" />
+      <img
+        src={toggled ? smallShinyImage : smallImage}
+        width="192"
+        height="192"
+      />
       <h4> The type of the pokemon</h4>
       <p> Name </p>
       <section className="input-name-section">
@@ -34,13 +48,18 @@ function GenerationPart({ onSearch, pokemonData }) {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <img
-          className="input-icon"
-          src="../images/glitter.svg"
-          alt="logo"
-          height="20px"
-          width="20px"
-        />
+        <button
+          className="pokemon-generation-button"
+          onClick={() => setToggled(!toggled)}
+        >
+          <img
+            className="input-icon"
+            src="../images/glitter.svg"
+            alt="logo"
+            height="20px"
+            width="20px"
+          />
+        </button>
       </section>
       <p> National Pokedex Number</p>
       <div>
@@ -69,11 +88,11 @@ function GenerationPart({ onSearch, pokemonData }) {
           </button>
         </div>
       </div>
-      <div>
-        <button className="search-button" onClick={handleClick}>
+      <div className="pokemon-generation-button-section">
+        <button className="pokemon-generation-button" onClick={handleClick}>
           Search
         </button>
-        <button className="random-button" onClick={randomPokemon}>
+        <button className="pokemon-generation-button" onClick={randomPokemon}>
           Randomize
         </button>
       </div>

@@ -48,9 +48,9 @@ p {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
 }
-.input-icon {
+/* .input-icon {
   margin-left: -1.8rem;
-}
+} */
 .with-icon {
   background-color: white;
   /* border: none; */
@@ -72,4 +72,14 @@ p {
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
+}
+.pokemon-generation-button-section {
+  display: flex;
+  flex-direction: row;
+  /* align-items: center;
+  justify-content: center; */
+  gap: 1rem;
+}
+.pokemon-generation-button {
+  border: 2px solid rgb(214, 214, 214);
 }
