@@ -49,7 +49,7 @@ function GenerationPart({ onSearch, pokemonData }) {
           value={name}
         />
         <button
-          className="pokemon-generation-button"
+          className="image-generation-button"
           onClick={() => setToggled(!toggled)}
         >
           <img
@@ -63,13 +63,13 @@ function GenerationPart({ onSearch, pokemonData }) {
       </section>
       <p> National Pokedex Number</p>
       <div>
-        <div className="number-interaction">
+        <div className="input-name-section">
           <button className="pokemon-number-button">
             <img
               src="../images/arrow-down.svg"
               alt="arrow"
-              height="10px"
-              width="10px"
+              height="15px"
+              width="15px"
             />
           </button>
           <input
@@ -82,8 +82,8 @@ function GenerationPart({ onSearch, pokemonData }) {
             <img
               src="../images/arrow-up.svg"
               alt="logo"
-              height="10px"
-              width="10px"
+              height="15px"
+              width="15px"
             />
           </button>
         </div>
