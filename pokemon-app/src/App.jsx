@@ -8,10 +8,10 @@ function App() {
   const [image, setImage] = useState(
     `https://www.pokemonpalette.com/images/pokemon/official-artwork/25.png`
   );
-  const [smallImage, setSmallImage] = useState(
-    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png`
-  );
-  // const [pokemonName, setPokemonName] = useState("");
+  // const [smallImage, setSmallImage] = useState(
+  //   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png`
+  // );
+
   const [pokemonData, setPokemonData] = useState(null);
 
   const getPokemonInfo = useCallback(async (pokemonName, pokemonNumber) => {
@@ -53,7 +53,6 @@ function App() {
         setImage(
           `https://www.pokemonpalette.com/images/pokemon/official-artwork/${data.id}.png`
         );
-        setSmallImage(data.sprites.front_default);
       })
       .catch((err) => {
         console.error(err);
@@ -70,7 +69,11 @@ function App() {
       <div>
         {pokemonData && (
           <div className="pokemon-app">
-            <GenerationPart onSearch={getPokemonInfo} smallImage={smallImage} />
+            <GenerationPart
+              onSearch={getPokemonInfo}
+              pokemonData={pokemonData}
+            />
+
             <PokemonPalettePart image={image} pokemonData={pokemonData} />
           </div>
         )}

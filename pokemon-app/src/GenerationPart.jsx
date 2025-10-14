@@ -1,24 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./GenerationPart.css";
-function GenerationPart({ onSearch, smallImage }) {
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
+import PokemonInfo from "./PokemonInfo";
+function GenerationPart({ onSearch, pokemonData }) {
+  const [name, setName] = useState(pokemonData.name ? pokemonData.name : "");
+  const [id, setId] = useState(pokemonData.id ? pokemonData.id : "");
 
   const handleClick = () => {
     onSearch(name.toLowerCase().trim(), id.trim());
-    setName("");
-    setId("");
+    setName(pokemonData.name);
+    setId(pokemonData.id);
   };
-  const randomPokemon = () => {
+  const randomPokemon = async () => {
     const randomId = Math.floor(Math.random() * 1025) + 1;
     console.log(randomId);
-    onSearch("", randomId.toString());
-    setName("");
-    setId("");
+    await onSearch("", randomId.toString());
   };
+  useEffect(() => {
+    if (pokemonData) {
+      setName(pokemonData.name);
+      setId(pokemonData.id);
+    }
+  }, [pokemonData]);
   return (
     <div className="generation-part item left">
-      <img src={smallImage} />
+      <img src={pokemonData.sprite} width="192" height="" />
       <h4> The type of the pokemon</h4>
       <p> Name </p>
       <section className="input-name-section">
@@ -72,6 +77,7 @@ function GenerationPart({ onSearch, smallImage }) {
           Randomize
         </button>
       </div>
+      <PokemonInfo pokemonData={pokemonData} />
     </div>
   );
 }
