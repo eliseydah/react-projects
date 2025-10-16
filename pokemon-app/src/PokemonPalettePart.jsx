@@ -1,7 +1,7 @@
 import "./PokemonPalettePart.css";
 import ThemeToggler from "./ThemeToggler";
 import ColorBlock from "./ColorBlock";
-function PokemonPalettePart({ image, pokemonData }) {
+function PokemonPalettePart({ image, pokemonData, palette }) {
   return (
     <div className="container item right">
       <div className="pokemon-palette-part">
@@ -33,9 +33,9 @@ function PokemonPalettePart({ image, pokemonData }) {
         </div>
       </div>
       <div className="colors-section">
-        <ColorBlock />
-        <ColorBlock />
-        <ColorBlock />
+        {palette.map((color, index) => (
+          <ColorBlock key={index} color={color} />
+        ))}
       </div>
     </div>
   );

@@ -1,11 +1,11 @@
 .color {
   width: 30%;
   height: 50%;
-  background-color: blueviolet;
   display: flex;
   font-size: 2rem;
   /* align-items: ; */
   justify-content: space-between;
+  background-color: var(--block-color, #000);
 }
 .color p {
   margin: 0;

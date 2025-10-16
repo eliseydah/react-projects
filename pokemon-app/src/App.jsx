@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import ColorThief from "colorthief";
 import GenerationPart from "./GenerationPart";
 import PokemonPalettePart from "./PokemonPalettePart";
 import { ThemeProvider } from "./ThemeProvider";
@@ -13,7 +14,8 @@ function App() {
   // );
 
   const [pokemonData, setPokemonData] = useState(null);
-
+  const [palette, setPalette] = useState([]);
+  const colorThief = new ColorThief();
   const getPokemonInfo = useCallback(async (pokemonName, pokemonNumber) => {
     // event.preventDefault();
     let url = "";
@@ -54,6 +56,21 @@ function App() {
         setImage(
           `https://www.pokemonpalette.com/images/pokemon/official-artwork/${data.id}.png`
         );
+        if (formattedData.sprite) {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.src = formattedData.sprite;
+
+          img.onload = () => {
+            try {
+              const colors = colorThief.getPalette(img, 6);
+              setPalette(colors); // сохраняем палитру
+              console.log("Палитра покемона:", colors);
+            } catch (err) {
+              console.error("Не удалось получить палитру:", err);
+            }
+          };
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -75,7 +92,11 @@ function App() {
               pokemonData={pokemonData}
             />
 
-            <PokemonPalettePart image={image} pokemonData={pokemonData} />
+            <PokemonPalettePart
+              image={image}
+              pokemonData={pokemonData}
+              palette={palette}
+            />
           </div>
         )}
       </div>

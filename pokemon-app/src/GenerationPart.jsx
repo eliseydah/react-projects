@@ -17,6 +17,7 @@ function GenerationPart({ onSearch, pokemonData }) {
     const randomId = Math.floor(Math.random() * 1025) + 1;
     console.log(randomId);
     await onSearch("", randomId.toString());
+    setToggled(false);
   };
   //   const pokemonToggleImage = () => {
   const [toggled, setToggled] = useState(false);
