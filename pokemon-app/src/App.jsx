@@ -9,15 +9,10 @@ function App() {
   const [image, setImage] = useState(
     `https://www.pokemonpalette.com/images/pokemon/official-artwork/25.png`
   );
-  // const [smallImage, setSmallImage] = useState(
-  //   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png`
-  // );
 
   const [pokemonData, setPokemonData] = useState(null);
   const [palette, setPalette] = useState([]);
-  const colorThief = new ColorThief();
   const getPokemonInfo = useCallback(async (pokemonName, pokemonNumber) => {
-    // event.preventDefault();
     let url = "";
     if (pokemonNumber) {
       url = `https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`;
@@ -56,21 +51,6 @@ function App() {
         setImage(
           `https://www.pokemonpalette.com/images/pokemon/official-artwork/${data.id}.png`
         );
-        if (formattedData.sprite) {
-          const img = new Image();
-          img.crossOrigin = "anonymous";
-          img.src = formattedData.sprite;
-
-          img.onload = () => {
-            try {
-              const colors = colorThief.getPalette(img, 6);
-              setPalette(colors); // сохраняем палитру
-              console.log("Палитра покемона:", colors);
-            } catch (err) {
-              console.error("Не удалось получить палитру:", err);
-            }
-          };
-        }
       })
       .catch((err) => {
         console.error(err);
@@ -79,13 +59,33 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (pokemonData?.sprite) {
+      const colorThief = new ColorThief();
+
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = pokemonData.sprite;
+
+      img.onload = () => {
+        try {
+          const colors = colorThief.getPalette(img, 6);
+          setPalette(colors); // сохраняем палитру
+          console.log("Палитра покемона:", colors);
+        } catch (err) {
+          console.error("Не удалось получить палитру:", err);
+        }
+      };
+    }
+  }, [pokemonData]);
+
+  useEffect(() => {
     getPokemonInfo(null, 25); // по ID
   }, [getPokemonInfo]);
 
   return (
     <ThemeProvider>
       <div>
-        {pokemonData && (
+        {pokemonData && palette.length && (
           <div className="pokemon-app">
             <GenerationPart
               onSearch={getPokemonInfo}

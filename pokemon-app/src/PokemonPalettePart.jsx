@@ -2,6 +2,16 @@ import "./PokemonPalettePart.css";
 import ThemeToggler from "./ThemeToggler";
 import ColorBlock from "./ColorBlock";
 function PokemonPalettePart({ image, pokemonData, palette }) {
+  const color1 = `rgb(${palette[0].join(",")})`;
+  const color2 = `rgb(${palette[1].join(",")})`;
+  const color3 = `rgb(${palette[2].join(",")})`;
+  const gradientStyle = {
+    background: `linear-gradient(90deg, ${color1}, ${color2}, ${color3}) text`,
+    WebkitTextFillColor: "transparent",
+    fontSize: "48px",
+    fontWeight: "bold",
+  };
+
   return (
     <div className="container item right">
       <div className="pokemon-palette-part">
@@ -13,7 +23,9 @@ function PokemonPalettePart({ image, pokemonData, palette }) {
             your Pokémon to life. Discover patterns, compare favorites, or just
             enjoy exploring the colorful side of the Pokédex.
           </span>
-          <p className="pokemon-name-text">{pokemonData.name}</p>
+          <p style={gradientStyle} className="pokemon-name-text">
+            {pokemonData.name}
+          </p>
 
           <div className="button-section">
             <button className="scroll-button">
